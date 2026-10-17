@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>ЕБЛ — карта кода</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Unbounded:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#04070d; --panel:#0a1220; --line:#1b2942; --ink:#dbe7f5; --mut:#7d90a8;
+    --cyan:#22d3ee; --emerald:#34d399; --violet:#a78bfa; --amber:#fbbf24; --rose:#fb7185; --slate:#94a3b8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",ui-monospace,monospace}
+  body{padding:26px 22px 40px;background-image:linear-gradient(rgba(27,41,66,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(27,41,66,.35) 1px,transparent 1px);background-size:40px 40px}
+  header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(34,211,238,.6);animation:pulse 2.4s infinite;display:inline-block}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,211,238,.55)}70%{box-shadow:0 0 0 12px rgba(34,211,238,0)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}}
+  h1{font-family:"Unbounded",sans-serif;font-size:20px;margin:0;letter-spacing:-.2px}
+  .sub{color:var(--mut);font-size:12px;margin:6px 0 20px}
+  .wrap{border:1px solid var(--line);border-radius:14px;background:rgba(10,18,32,.72);padding:8px;overflow:hidden}
+  svg{display:block;width:100%;height:auto}
+  .edge{stroke:#2b3f5e;stroke-width:1.4;fill:none;transition:opacity .18s,stroke .18s}
+  .edge.hot{stroke:var(--cyan);stroke-width:2.2;filter:drop-shadow(0 0 5px rgba(34,211,238,.65))}
+  .edge.dim{opacity:.12}
+  .node{cursor:pointer;transition:opacity .18s}
+  .node.dim{opacity:.22}
+  .node:hover .box{filter:brightness(1.25)}
+  .box{transition:filter .18s}
+  .ntitle{font-size:12px;fill:#e6f1ff;font-weight:500}
+  .nsub{font-size:8.5px;fill:#7d90a8}
+  .ntag{font-size:7.5px;fill:#4d6480;letter-spacing:.4px}
+  .zone{fill:none;stroke-dasharray:5 5;stroke-width:1}
+  .zlabel{font-size:8px;letter-spacing:1.2px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin:12px 2px 0;font-size:10px;color:var(--mut)}
+  .legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:-1px}
+  .panel{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .card{border:1px solid var(--line);border-radius:12px;background:rgba(10,18,32,.75);padding:13px 14px}
+  .card h3{margin:0 0 8px;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--mut);font-weight:500}
+  .card ul{margin:0;padding:0;list-style:none;font-size:11px;line-height:1.65}
+  .card li{color:#b9cade}
+  .card code,.detail code{color:var(--cyan);font-size:10.5px}
+  .detail{margin-top:12px;border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:0 12px 12px 0;background:rgba(10,18,32,.85);padding:13px 15px;min-height:78px}
+  .detail h3{margin:0 0 5px;font-size:12.5px;color:#eaf4ff}
+  .detail p{margin:0;font-size:11px;line-height:1.6;color:#a9bcd2}
+  .detail .paths{margin-top:7px;font-size:10.5px;color:var(--mut)}
+  .read{margin-top:12px;font-size:11px;color:var(--mut);line-height:1.8}
+  .read b{color:#cfe0f2;font-weight:500}
+  footer{margin-top:18px;font-size:10px;color:#4b5f78}
+</style>
+</head>
+<body>
+<header><span class="dot"></span><h1>ЕБЛ — карта кода</h1></header>
+<div class="sub">alekkan/ebl · TypeScript, PLpgSQL, Python · 17 473 строки в 7 языках · ветка main</div>
+
+<div class="wrap">
+<svg viewBox="0 0 1180 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2b3f5e"/>
+    </marker>
+    <marker id="arHot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <!-- ============ ZONES ============ -->
+  <rect class="zone" x="20" y="66" width="250" height="332" rx="14" stroke="#22d3ee" opacity=".38"/>
+  <text class="zlabel" x="32" y="58" fill="#22d3ee" opacity=".8">КЛИЕНТЫ</text>
+
+  <rect class="zone" x="500" y="66" width="404" height="560" rx="14" stroke="#34d399" opacity=".38"/>
+  <text class="zlabel" x="512" y="58" fill="#34d399" opacity=".85">SUPABASE · yeerkfdgmhcmvdqzaoio · eu-central-1</text>
+
+  <rect class="zone" x="936" y="66" width="224" height="470" rx="14" stroke="#94a3b8" opacity=".3"/>
+  <text class="zlabel" x="948" y="58" fill="#94a3b8" opacity=".8">СНАРУЖИ</text>
+
+  <!-- ============ EDGES (drawn under boxes) ============ -->
+  <g id="edges">
+    <path class="edge" data-from="site" data-to="gw"       d="M270 170 C 300 170, 300 168, 326 168" marker-end="url(#ar)"/>
+    <path class="edge" data-from="gw" data-to="db"         d="M488 152 C 520 152, 512 214, 528 214" marker-end="url(#ar)"/>
+    <path class="edge" data-from="gw" data-to="fn"         d="M488 192 C 524 192, 512 330, 528 330" marker-end="url(#ar)"/>
+    <path class="edge" data-from="tg" data-to="bot"        d="M270 330 C 400 330, 420 372, 528 372" marker-end="url(#ar)"/>
+    <path class="edge" data-from="bot" data-to="db"        d="M600 322 C 600 268, 592 258, 592 250" marker-end="url(#ar)"/>
+    <path class="edge" data-from="bot" data-to="tapi"      d="M724 322 C 840 322, 900 128, 952 128" marker-end="url(#ar)"/>
+    <path class="edge" data-from="rec" data-to="db"        d="M700 556 C 700 470, 640 300, 640 258" marker-end="url(#ar)"/>
+    <path class="edge" data-from="photos" data-to="ys3"    d="M796 556 C 900 556, 940 240, 952 232" marker-end="url(#ar)"/>
+    <path class="edge" data-from="backup" data-to="ys3"    d="M860 556 C 930 556, 946 300, 952 300" marker-end="url(#ar)"/>
+    <path class="edge" data-from="fn" data-to="geo"        d="M790 322 C 880 322, 920 420, 952 420" marker-end="url(#ar)"/>
+    <path class="edge" data-from="login" data-to="gw"      d="M528 452 C 470 452, 470 210, 488 200" marker-end="url(#ar)"/>
+    <path class="edge" data-from="cron" data-to="rec"      d="M760 470 C 760 490, 740 500, 716 520" marker-end="url(#ar)"/>
+  </g>
+
+  <!-- ============ CLIENT SIDE ============ -->
+  <g class="node" data-node="site" data-title="Сайт ebl.su" data-desc="Статика без сборки. Yandex Object Storage как основной домен, GitHub Pages как резерв — оба собираются из prototype/. db.js — слой данных: с ключом Supabase боевой режим, без него витрина на JSON и localStorage.">
+    <rect class="box" x="40" y="104" width="230" height="132" rx="8" fill="#083344" opacity=".42" stroke="#22d3ee" stroke-width="1.5"/>
+    <rect x="40" y="104" width="230" height="132" rx="8" fill="none" stroke="#22d3ee" stroke-width="1.5"/>
+    <text class="ntag" x="56" y="126">FRONTEND</text>
+    <text class="ntitle" x="56" y="150">Сайт ebl.su</text>
+    <text class="nsub" x="56" y="168">index.html · app.js · db.js</text>
+    <text class="nsub" x="56" y="182">config.js · style.css</text>
+    <text class="nsub" x="56" y="196">vendor/ Leaflet 1.9.4</text>
+    <text class="nsub" x="56" y="210">Карта · таблица · лента</text>
+    <text class="nsub" x="56" y="224" fill="#5f7691">prototype/</text>
+  </g>
+
+  <g class="node" data-node="tg" data-title="Telegram-группа лиги" data-desc="Общий чат. Люди пишут пост о походе, бот разбирает его прямо в чате: баня, компания, «долгая», геоточка, фото. Там же решения Комиссии кнопками и общий сбор «@eblany».">
+    <rect x="40" y="286" width="230" height="94" rx="8" fill="#1e293b" opacity=".55" stroke="#94a3b8" stroke-width="1.5"/>
+    <text class="ntag" x="56" y="308">ИСТОЧНИК ДАННЫХ</text>
+    <text class="ntitle" x="56" y="330">Telegram-группа</text>
+    <text class="nsub" x="56" y="348">посты о походах, фото</text>
+    <text class="nsub" x="56" y="362">кнопки Комиссии</text>
+  </g>
+
+  <!-- ============ GATEWAY ============ -->
+  <g class="node" data-node="gw" data-title="API-шлюз ebl-api" data-desc="Yandex API Gateway — единственный путь браузера к Supabase: сам Supabase за Cloudflare, а его режут провайдеры в России. Проксирует REST, Auth, Storage и функции как есть.">
+    <rect x="326" y="118" width="162" height="100" rx="8" fill="#78350f" opacity=".3" stroke="#fbbf24" stroke-width="1.5"/>
+    <text class="ntag" x="342" y="140">TRANSPORT</text>
+    <text class="ntitle" x="342" y="164">API-шлюз</text>
+    <text class="nsub" x="342" y="182">ebl-api · Yandex</text>
+    <text class="nsub" x="342" y="196" fill="#5f7691">infra/api-gateway.yaml</text>
+  </g>
+
+  <!-- ============ EDGE FUNCTIONS ============ -->
+  <g class="node" data-node="fn" data-title="Edge-функции" data-desc="Восемь Deno-функций на service role. Каждая сама проверяет, кто пришёл: секрет вебхука, JWT пользователя или членство в лиге. Общий код — в _shared/.">
+    <rect x="528" y="248" width="360" height="96" rx="8" fill="#064e3b" opacity=".45" stroke="#34d399" stroke-width="1.5"/>
+    <text class="ntag" x="544" y="270">supabase/functions/</text>
+    <text class="ntitle" x="544" y="292">tg-login · tg-bot · recompute</text>
+    <text class="nsub" x="544" y="310">photos · week-results · backup</text>
+    <text class="nsub" x="544" y="324">sync-avatars · bath-location · _shared/</text>
+  </g>
+
+  <g class="node" data-node="bot" data-title="tg-bot" data-desc="Вебхук Telegram и самая большая функция: разбор постов, черновики, модерация Комиссией, геоточки, клички, заявки «это я», фото к походу, общий сбор «@eblany».">
+    <rect x="528" y="352" width="228" height="82" rx="8" fill="#064e3b" opacity=".55" stroke="#34d399" stroke-width="1.5"/>
+    <text class="ntitle" x="544" y="378">tg-bot</text>
+    <text class="nsub" x="544" y="396">вебхук Telegram</text>
+    <text class="nsub" x="544" y="412" fill="#5f7691">фото, клички, @eblany</text>
+  </g>
+
+  <g class="node" data-node="login" data-title="tg-login" data-desc="Вход через Telegram кодом из бота: код из шести знаков, секрет опроса, срок 10 минут. Одноразовый token_hash на выходе. Виджет остался запасным путём.">
+    <rect x="528" y="440" width="228" height="76" rx="8" fill="#083344" opacity=".42" stroke="#22d3ee" stroke-width="1.5"/>
+    <text class="ntitle" x="544" y="466">tg-login</text>
+    <text class="nsub" x="544" y="484">код из бота, token_hash</text>
+    <text class="nsub" x="544" y="500" fill="#5f7691">login_codes</text>
+  </g>
+
+  <g class="node" data-node="db" data-title="Postgres: журнал походов" data-desc="Единица данных — поход: visits плюс visit_players. Всё остальное считается из журнала. Всё под RLS, права выданы явно; запись в standings — только у recompute.">
+    <rect x="528" y="112" width="248" height="120" rx="8" fill="#4c1d95" opacity=".42" stroke="#a78bfa" stroke-width="1.5"/>
+    <text class="ntag" x="544" y="134">supabase/migrations/</text>
+    <text class="ntitle" x="544" y="158">Postgres</text>
+    <text class="nsub" x="544" y="176">visits · visit_players</text>
+    <text class="nsub" x="544" y="190">baths · players · reviews</text>
+    <text class="nsub" x="544" y="204">standings · visit_points</text>
+    <text class="nsub" x="544" y="218" fill="#5f7691">49 миграций · seed.sql</text>
+  </g>
+
+  <g class="node" data-node="rec" data-title="recompute" data-desc="Пересчёт таблицы по регламенту: считает очки по каждому походу и пишет standings и visit_points одной транзакцией под advisory-замком. Запускается по расписанию и после правок.">
+    <rect x="600" y="536" width="196" height="74" rx="8" fill="#064e3b" opacity=".45" stroke="#34d399" stroke-width="1.5"/>
+    <text class="ntitle" x="616" y="562">recompute</text>
+    <text class="nsub" x="616" y="580">standings · visit_points</text>
+    <text class="nsub" x="616" y="594" fill="#5f7691">_shared/scoring.js</text>
+  </g>
+
+  <g class="node" data-node="photos" data-title="photos" data-desc="Перекачивает фото походов из Telegram в бакет ebl-photos: триггер на новое фото и повторы по расписанию, до пяти попыток.">
+    <rect x="796" y="536" width="108" height="74" rx="8" fill="#064e3b" opacity=".45" stroke="#34d399" stroke-width="1.5"/>
+    <text class="ntitle" x="810" y="562" font-size="11">photos</text>
+    <text class="nsub" x="810" y="580">→ ebl-photos</text>
+  </g>
+
+  <g class="node" data-node="backup" data-title="backup" data-desc="Ночной бэкап таблиц public и аватарок в бакет ebl-backups. Копия живёт 30 дней.">
+    <rect x="796" y="440" width="108" height="76" rx="8" fill="#064e3b" opacity=".38" stroke="#34d399" stroke-width="1.5"/>
+    <text class="ntitle" x="810" y="466" font-size="11">backup</text>
+    <text class="nsub" x="810" y="484">03:30 МСК</text>
+    <text class="nsub" x="810" y="500">→ ebl-backups</text>
+  </g>
+
+  <g class="node" data-node="cron" data-title="pg_cron" data-desc="Шесть заданий в базе: ежедневный пересчёт, аватары по понедельникам, ночной бэкап, дозапрос геокодера каждые 5 минут, докачка фото каждые 10 минут, итоги недели по воскресеньям.">
+    <rect x="640" y="424" width="228" height="58" rx="8" fill="#1e293b" opacity=".6" stroke="#94a3b8" stroke-width="1.4"/>
+    <text class="ntitle" x="656" y="448" font-size="11">pg_cron</text>
+    <text class="nsub" x="656" y="464">6 заданий в базе</text>
+  </g>
+
+  <!-- ============ EXTERNAL ============ -->
+  <g class="node" data-node="tapi" data-title="Telegram Bot API" data-desc="Вход по подписи, отправка карточек, итогов недели и общих сборов. Токен @eblsu_bot живёт в секретах функций и в чат не попадает.">
+    <rect x="952" y="98" width="192" height="72" rx="8" fill="#1e293b" opacity=".6" stroke="#94a3b8" stroke-width="1.4"/>
+    <text class="ntitle" x="968" y="124" font-size="11">Telegram Bot API</text>
+    <text class="nsub" x="968" y="142">@eblsu_bot</text>
+    <text class="nsub" x="968" y="156">post, edit, photos</text>
+  </g>
+
+  <g class="node" data-node="ys3" data-title="Yandex Object Storage" data-desc="Два бакета в каталоге ebl: ebl-photos с фото походов (пишет только сервисный аккаунт) и ebl-backups с ночными копиями базы. Там же живёт сам сайт.">
+    <rect x="952" y="200" width="192" height="104" rx="8" fill="#78350f" opacity=".3" stroke="#fbbf24" stroke-width="1.4"/>
+    <text class="ntitle" x="968" y="226" font-size="11">Object Storage</text>
+    <text class="nsub" x="968" y="244">ebl-photos</text>
+    <text class="nsub" x="968" y="258">ebl-backups (30 дней)</text>
+    <text class="nsub" x="968" y="272">сайт ebl.su</text>
+    <text class="nsub" x="968" y="290" fill="#5f7691">каталог ebl</text>
+  </g>
+
+  <g class="node" data-node="geo" data-title="Nominatim и OSM" data-desc="Геокодер Nominatim уточняет страну и регион бани, без них нет бонуса за регион. Подложка карты — тайлы OpenStreetMap с CSS-фильтром.">
+    <rect x="952" y="380" width="192" height="92" rx="8" fill="#1e293b" opacity=".6" stroke="#94a3b8" stroke-width="1.4"/>
+    <text class="ntitle" x="968" y="406" font-size="11">Nominatim · OSM</text>
+    <text class="nsub" x="968" y="424">геокодер, страна, регион</text>
+    <text class="nsub" x="968" y="438">тайлы карты</text>
+    <text class="nsub" x="968" y="456" fill="#5f7691">scripts/geocode.py</text>
+  </g>
+
+  <g class="node" data-node="scripts" data-title="Скрипты и тесты" data-desc="scripts/ — выгрузка Google-таблицы, сопоставление бань, геокодинг, выкладка, бэкап. tests/ — сквозные прогоны на локальном Supabase со заглушкой Telegram и геокодера.">
+    <rect x="40" y="536" width="430" height="76" rx="8" fill="#1e293b" opacity=".45" stroke="#94a3b8" stroke-width="1.3"/>
+    <text class="ntitle" x="56" y="562" font-size="11">scripts/ и tests/</text>
+    <text class="nsub" x="56" y="580">extract.py · matcher.py · geocode.py · seed.py · deploy.sh</text>
+    <text class="nsub" x="56" y="596">tests/test_bot.py · test_site.py · test_backend.py · stub.py</text>
+  </g>
+
+</svg>
+</div>
+
+<div class="legend">
+  <span><i style="background:#22d3ee"></i>клиент</span>
+  <span><i style="background:#34d399"></i>функции</span>
+  <span><i style="background:#a78bfa"></i>база</span>
+  <span><i style="background:#fbbf24"></i>Яндекс</span>
+  <span><i style="background:#94a3b8"></i>снаружи</span>
+  <span style="color:#4b5f78">наведите на блок</span>
+</div>
+
+<div class="detail" id="detail">
+  <h3>Откуда начинать читать</h3>
+  <p>docs/architecture.md объясняет компоненты целиком. Дальше проще идти по одному походу: форма на сайте зовёт submit_visit, тот пишет visits, триггер зовёт бота, Комиссия засчитывает, recompute пересчитывает таблицу.</p>
+</div>
+
+<div class="panel">
+  <div class="card">
+    <h3>Ядро модели</h3>
+    <ul>
+      <li><code>visits</code> — поход: баня, заход, отметка, статус</li>
+      <li><code>visit_players</code> — кто был в походе</li>
+      <li><code>standings</code> — таблица, пишет только recompute</li>
+      <li><code>legacy_visits</code> — остаток из Google-таблицы</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Расписание</h3>
+    <ul>
+      <li>00:05 — пересчёт закрытой недели</li>
+      <li>03:30 — бэкап базы в Яндекс</li>
+      <li>каждые 5 мин — геокодер, итоги недели</li>
+      <li>каждые 10 мин — докачка фото</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Как устроен доступ</h3>
+    <ul>
+      <li>Всё под RLS, права выданы явно</li>
+      <li>Отметить поход — только от своего имени</li>
+      <li>Засчитать и править — только Комиссия</li>
+      <li>Функции на service role, проверяют вход сами</li>
+    </ul>
+  </div>
+</div>
+
+<div class="read">
+  <b>1.</b> prototype/db.js — слой данных, от него зависит весь сайт · <b>2.</b> supabase/migrations/20260926120000_schema.sql — схема ·
+  <b>3.</b> supabase/functions/tg-bot/index.ts — самое плотное место · <b>4.</b> supabase/functions/recompute/index.ts — очки ·
+  <b>5.</b> tests/ — как всё это проверяют на локальном стенде
+</div>
+
+<footer>Собрано из репозитория alekkan/ebl, ветка main · модули и пути взяты из docs/architecture.md и дерева файлов</footer>
+
+<script>
+(function(){
+  var nodes = document.querySelectorAll('.node');
+  var edges = document.querySelectorAll('.edge');
+  var detail = document.getElementById('detail');
+
+  function reset(){
+    nodes.forEach(function(n){n.classList.remove('dim')});
+    edges.forEach(function(e){e.classList.remove('hot','dim'); e.setAttribute('marker-end','url(#ar)')});
+  }
+
+  function focusNode(name){
+    nodes.forEach(function(n){ n.classList.toggle('dim', n.dataset.node !== name) });
+    edges.forEach(function(e){
+      var on = e.dataset.from === name || e.dataset.to === name;
+      e.classList.toggle('hot', on);
+      e.classList.toggle('dim', !on);
+      e.setAttribute('marker-end', on ? 'url(#arHot)' : 'url(#ar)');
+    });
+  }
+
+  nodes.forEach(function(n){
+    n.addEventListener('mouseenter', function(){
+      focusNode(n.dataset.node);
+    });
+    n.addEventListener('click', function(){
+      detail.innerHTML = '<h3>'+n.dataset.title+'</h3><p>'+n.dataset.desc+'</p>';
+      focusNode(n.dataset.node);
+      var first = n.querySelector('rect');
+      if(first){ first.animate(
+        [{opacity:.35},{opacity:1}], {duration:420, easing:'ease-out'}
+      ); }
+    });
+    n.addEventListener('mouseleave', reset);
+  });
+
+  // первая отрисовка: узлы проявляются, стрелки дорисовываются
+  nodes.forEach(function(n,i){
+    n.animate([{opacity:0, transform:'translateY(6px)'},{opacity:1, transform:'none'}],
+      {duration:420, delay:i*45, fill:'both', easing:'cubic-bezier(.22,1,.36,1)'});
+  });
+  edges.forEach(function(e,i){
+    var len = e.getTotalLength ? e.getTotalLength() : 200;
+    e.style.strokeDasharray = len; e.style.strokeDashoffset = len;
+    e.animate([{strokeDashoffset:len},{strokeDashoffset:0}],
+      {duration:520, delay:260+i*55, fill:'both', easing:'ease-out'});
+  });
+})();
+</script>
+</body>
+</html>
